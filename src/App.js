@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import reducer, { initialState } from './reducers/index'
 import './App.css';
 
-import { addOne, applyNumber, changeOperator, clearDisplay } from './actions/index'
+import { addOne, applyNumber, changeOperator, clearDisplay, memoryRegister, memoryRecall, memoryClear } from './actions/index'
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 
@@ -33,6 +33,18 @@ const clearOperator = () => {
   dispatch(clearDisplay())
 }
 
+const registerMemory = (number) => {
+  dispatch(memoryRegister(number))
+}
+const recallMemory = () => {
+  dispatch(memoryRecall())
+}
+const clearMemory = () => {
+  dispatch(memoryClear())
+}
+
+
+
   return (
 		<div className="App">
 			<nav className="navbar navbar-dark bg-dark">
@@ -52,9 +64,9 @@ const clearOperator = () => {
 						</div>
 
 						<div className="row">
-							<CalcButton value={"M+"} />
-							<CalcButton value={"MR"} />
-							<CalcButton value={"MC"} />
+							<CalcButton value={"M+"} onClick={registerMemory} />
+							<CalcButton value={"MR"} onClick={recallMemory} />
+							<CalcButton value={"MC"} onClick={clearMemory} />
 						</div>
 
 						<div className="row">
