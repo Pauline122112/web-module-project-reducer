@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import reducer, { initialState } from './reducers/index'
 import './App.css';
 
-import { addOne, applyNumber, changeOperator } from './actions/index'
+import { addOne, applyNumber, changeOperator, clearDisplay } from './actions/index'
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 
@@ -27,6 +27,10 @@ const multiplyOperator = () => {
 
 const subtractOperator = () => {
   dispatch(changeOperator('-'))
+}
+
+const clearOperator = () => {
+  dispatch(clearDisplay())
 }
 
   return (
@@ -78,7 +82,7 @@ const subtractOperator = () => {
 						</div>
 
 						<div className="row ce_button">
-							<CalcButton value={"CE"} />
+							<CalcButton value={"CE"} onClick={clearOperator} />
 						</div>
 					</form>
 				</div>
